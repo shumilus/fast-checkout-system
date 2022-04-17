@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAxCyyzvfxLeAxFcrzTOz0otlvUpiHx4OU',
+    authDomain: 'fast-checkout-system.firebaseapp.com',
+    databaseURL: 'https://fast-checkout-system-default-rtdb.firebaseio.com',
+    projectId: 'fast-checkout-system',
+    storageBucket: 'fast-checkout-system.appspot.com',
+    messagingSenderId: '30326702260',
+    appId: '1:30326702260:web:39e6a9e2db08b3a81117e1'
+  }
 };
 
 /*

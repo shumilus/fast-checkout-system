@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fast-checkout-system": {
+      "hosting": {
+        "fast-checkout-system": [
+          "fast-checkout-system"
+        ]
+      }
+    }
+  }
+}

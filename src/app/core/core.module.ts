@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { FirebaseModule } from './modules';
 import { AuthenticationModule } from '../authentication/authentication.module';
-import { PageNotFoundComponent } from './components';
+import { HeaderComponent, PageNotFoundComponent } from './components';
 import { SystemModule } from '../system/system.module';
 
 @NgModule({
   declarations: [
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +18,9 @@ import { SystemModule } from '../system/system.module';
     AuthenticationModule,
   ],
   providers: [],
+  exports: [
+    HeaderComponent
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

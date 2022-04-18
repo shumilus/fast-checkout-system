@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SystemComponent } from './containers';
 import { SystemRoutingModule } from './system-routing.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { SystemRoutingModule } from './system-routing.module';
   ],
   imports: [
     SystemRoutingModule,
+    CoreModule,
   ],
   providers: [],
 })

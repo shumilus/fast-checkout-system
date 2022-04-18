@@ -2,12 +2,16 @@
   <h2 class="title">Login</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="signInForm">
-    <label for="email">Email</label>
-    <input id="email" type="email" formControlName="email">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Please fill email field" formControlName="email">
+    </mat-form-field>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" formControlName="password">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Please fill password field" formControlName="password">
+    </mat-form-field>
 
-    <button class="btn" type="submit">Login</button>
+    <button class="btn" type="submit" mat-stroked-button>Login</button>
   </form>
 </div>

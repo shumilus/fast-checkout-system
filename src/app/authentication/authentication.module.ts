@@ -5,6 +5,7 @@ import { SignInComponent } from './components';
 import { AuthenticationGuard, AuthenticationService } from './services';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthenticationRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
   ],
   providers: [
     AuthenticationService,

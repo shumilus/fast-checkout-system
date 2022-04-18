@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthenticationComponent } from './containers';
 
 const AuthRoutes: Routes = [
@@ -7,8 +8,8 @@ const AuthRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(AuthRoutes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(AuthRoutes)],
+  exports: [RouterModule],
 })
 
 export class AuthenticationRoutingModule {

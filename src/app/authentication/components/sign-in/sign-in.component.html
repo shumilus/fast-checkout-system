@@ -1,10 +1,13 @@
 <div class="sign-in-container">
   <h2 class="title">Login</h2>
 
-  
-  <label for="email"></label>
-  <input id="email" type="email">
+  <form (ngSubmit)="onSubmit()" [formGroup]="signInForm">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email">
 
-  <label for="password"></label>
-  <input id="password" type="password">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password">
+
+    <button class="btn" type="submit">Login</button>
+  </form>
 </div>

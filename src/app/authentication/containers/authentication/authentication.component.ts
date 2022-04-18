@@ -3,20 +3,23 @@ import firebase from 'firebase';
 import UserCredential = firebase.auth.UserCredential;
 
 import { AuthenticationService } from '../../services';
+import { UserCredentials } from '../../../shared/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css'],
+  styleUrls: ['./authentication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthenticationComponent {
 
-  constructor(private _authService: AuthenticationService) {
+  constructor(private _authService: AuthenticationService,
+              private _router: Router) {
   }
 
   signUp(): void {
-    this._authService.signUp('', '')
+    this._authService.signUp('Zen@sayollo.com', '123456')
       .then((userCredential: UserCredential) => {
         console.log(userCredential);
         console.log('You are Successfully signed up!');
@@ -26,28 +29,15 @@ export class AuthenticationComponent {
       });
   }
 
-  signIn(): void {
-    this._authService.signIn('', '')
+  signIn(credentials: UserCredentials): void {
+    this._authService.signIn(credentials)
       .then((userCredential: UserCredential) => {
         console.log(userCredential);
         console.log('You are in!');
+        this._router.navigate(['/']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
       });
-  }
-
-  signOut(): void {
-    this._authService.signOut()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  }
-
-  addProduct(): void {
-
-  }
-
-  getProducts(): void {
-
   }
 }

@@ -3,27 +3,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import firebase from 'firebase';
-
 import User = firebase.User;
 import UserCredential = firebase.auth.UserCredential;
 
+import { UserCredentials } from '../../shared/models';
+
 @Injectable()
 export class FirebaseService {
-  userData: Observable<firebase.User>;
+  private _userData$: Observable<User>;
 
   constructor(private _fireAuth: AngularFireAuth,
               private _http: HttpClient,
               private _fireDatabase: AngularFireDatabase) {
-    this.userData = _fireAuth.authState;
-    this.userData.subscribe((res: User) => console.log(res));
+    this._userData$ = _fireAuth.authState;
   }
+
 
   signUp(email: string, password: string): Promise<UserCredential> {
     return this._fireAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  signIn(email: string, password: string): Promise<UserCredential> {
+  signIn({email, password}: UserCredentials): Promise<UserCredential> {
     return this._fireAuth.signInWithEmailAndPassword(email, password);
   }
 
@@ -39,5 +41,9 @@ export class FirebaseService {
 
   getProducts(): void {
     this._fireDatabase.list('products').valueChanges().subscribe(res => console.log(res));
+  }
+
+  isUserAuthenticated(): Observable<boolean>{
+    return this._userData$.pipe(map((user: User) => Boolean(user)));
   }
 }

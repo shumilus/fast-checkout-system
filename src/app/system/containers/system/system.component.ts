@@ -10,15 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SystemComponent implements OnInit {
 
-  constructor(private _authService: AuthenticationService,
-              private _router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  signOut(): void {
-    this._authService.signOut()
-      .then(() => this._router.navigate(['sign-in']))
-      .catch(err => console.log(err));
-  }
 }

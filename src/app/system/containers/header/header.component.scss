@@ -1,0 +1,10 @@
+@import "../../../../styles/variables/colors";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  background: $headerBackgroundColor;
+  padding: 0 23px 0 7px;
+}

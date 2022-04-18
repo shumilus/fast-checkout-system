@@ -1,0 +1,36 @@
+<div class="product" *ngFor="let product of products$ | async">
+  <h3 class="product-title">{{ product?.name }}</h3>
+
+  <div>
+    <img [src]="product?.path" alt="product image">
+  </div>
+
+  <p class="description">{{ product?.description }}</p>
+
+  <p class="price">
+    <span>Price: </span>
+    <span>{{ product?.price }}$</span>
+  </p>
+
+  <div class="quantity">
+    <p class="quantity-title">Qty:</p>
+    <div>
+      <button mat-mini-fab
+              color="accent"
+              class="circle-btn"
+              (click)="addQuantity()">+</button>
+      <span class="qty-number">{{ productQuantity }}</span>
+      <button mat-mini-fab
+              color="accent"
+              class="circle-btn"
+              (click)="deleteQuantity()"
+              [disabled]="productQuantity === 0">-</button>
+    </div>
+  </div>
+
+  <button class="btn"
+          type="submit"
+          mat-stroked-button
+          (click)="addProductToCart()">Add To Cart
+  </button>
+</div>

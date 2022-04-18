@@ -1,0 +1,57 @@
+@import "src/styles/variables/colors";
+
+.product {
+  width: 310px;
+  margin: 50px auto 50px;
+  color: $dark;
+
+  &-title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  img {
+    width: 310px;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 0 17px 0;
+  }
+
+  .price {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 19px;
+  }
+
+  .quantity {
+    display: flex;
+
+    &-title {
+      font-size: 14px;
+      line-height: 16px;
+      margin-right: 14px;
+    }
+
+    .qty-number {
+      margin: 0 8px;
+    }
+  }
+
+  .circle-btn {
+    background: $btnColor;
+  }
+
+  .btn {
+    font-size: 18px;
+    line-height: 21px;
+    background: $btnColor;
+    padding: 6px;
+    width: 100%;
+    margin-top: 50px;
+  }
+}

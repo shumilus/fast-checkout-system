@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 
-import { SystemComponent } from './containers';
 import { SystemRoutingModule } from './system-routing.module';
-import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
+import {
+  HeaderComponent,
+  MiniCartComponent,
+  ProductComponent,
+  SystemComponent,
+} from './containers';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    SystemComponent
+    SystemComponent,
+    HeaderComponent,
+    MiniCartComponent,
+    ProductComponent,
   ],
   imports: [
     SystemRoutingModule,
-    CoreModule,
+    SharedModule,
+    CommonModule,
   ],
   providers: [],
 })

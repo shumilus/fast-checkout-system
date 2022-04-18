@@ -10,12 +10,10 @@ const routes: Routes = [
   {
     path: 'sign-in',
     loadChildren: () => AuthenticationModule,
-    data: {preload: true, delay: false, name: 'sign-in'}
   },
   {
     path: '',
     loadChildren: () => SystemModule,
-    data: {preload: true, delay: false, name: ''}
   },
 
   {path: 'not-found', component: PageNotFoundComponent},

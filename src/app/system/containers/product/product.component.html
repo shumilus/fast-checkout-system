@@ -18,19 +18,31 @@
       <button mat-mini-fab
               color="accent"
               class="circle-btn"
-              (click)="addQuantity()">+</button>
-      <span class="qty-number">{{ productQuantity }}</span>
+              (click)="addQuantity()">+
+      </button>
+      <span class="qty-number">{{ counter }}</span>
       <button mat-mini-fab
               color="accent"
               class="circle-btn"
               (click)="deleteQuantity()"
-              [disabled]="productQuantity === 0">-</button>
+              [disabled]="!counter">-
+      </button>
     </div>
   </div>
 
-  <button class="btn"
-          type="submit"
-          mat-stroked-button
-          (click)="addProductToCart()">Add To Cart
-  </button>
+  <ng-container *ngIf="{ quantity: productQuantityInCart$ | async } as cart">
+    <button class="btn"
+            type="submit"
+            mat-stroked-button
+            [disabled]="!counter"
+            (click)="onAddProductToCart(cart.quantity)">Add To Cart
+    </button>
+
+    <button mat-raised-button
+            color="primary"
+            class="checkout-btn"
+            (click)="onCheckout()"
+            [disabled]="!cart.quantity">Checkout
+    </button>
+  </ng-container>
 </div>

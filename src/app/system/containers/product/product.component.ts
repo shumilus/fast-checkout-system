@@ -1,9 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { ProductService } from '../../services';
 import { Product } from '../../../shared/models';
+import { addProductToCart } from '../../../core/store/cart/cart.actions';
+import { getProductQuantity } from '../../../core/store/cart/cart.selectors';
+import { LocalStorageService } from '../../../shared/services';
 
 @Component({
   selector: 'app-product',
@@ -13,28 +17,41 @@ import { Product } from '../../../shared/models';
 })
 export class ProductComponent implements OnInit {
   products$: Observable<Product[]>;
+  productQuantityInCart$: Observable<number>;
 
-  productQuantity = 1;
+  counter = 0;
 
-  constructor(private _productService: ProductService) {
+  constructor(private _productService: ProductService,
+              private _localStorageService: LocalStorageService,
+              private _router: Router,
+              private _store: Store) {
   }
 
   ngOnInit(): void {
-    this.products$ = this._productService.getProducts().pipe(tap(res => console.log(res)));
+    this.products$ = this._productService.getProducts();
+    this.productQuantityInCart$ = this._store.select(getProductQuantity);
   }
 
-  addProductToCart(): void {
+  onAddProductToCart(quantityInCart: number): void {
+    const quantity = this.counter + quantityInCart;
+    this._store.dispatch(addProductToCart({quantity}));
+    this._localStorageService.setItem('cart', JSON.stringify({quantity}));
 
+    this.counter = 0;
   }
 
   addQuantity(): void {
-    this.productQuantity = this.productQuantity + 1;
+    this.counter = this.counter + 1;
   }
 
   deleteQuantity(): void {
-    if (this.productQuantity === 0) {
+    if (!this.counter) {
       return;
     }
-    this.productQuantity = this.productQuantity - 1;
+    this.counter = this.counter - 1;
+  }
+
+  onCheckout(): void {
+    this._router.navigate(['/checkout']);
   }
 }

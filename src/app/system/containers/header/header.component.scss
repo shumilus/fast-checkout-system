@@ -7,4 +7,18 @@
   height: 36px;
   background: $headerBackgroundColor;
   padding: 0 23px 0 7px;
+
+  mat-icon {
+    cursor: pointer;
+    margin-left: 30px;
+
+    &:hover {
+      color: blue;
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
 }

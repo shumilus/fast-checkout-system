@@ -1,0 +1,21 @@
+<div class="personal-info">
+  <p>Personal information</p>
+
+  <div class="info">
+    <p>{{ information?.fullName }}</p>
+    <p>{{ information?.address }}</p>
+    <p>Tel : {{ information?.phone }}</p>
+    <p>Credit Card:
+      {{ information?.creditCardNumber.slice(0, 4) }}
+      **** ****
+      {{ information?.creditCardNumber.slice(-4) }}
+    </p>
+    <p>Cvv ***</p>
+  </div>
+
+  <button class="btn"
+          type="button"
+          mat-stroked-button
+          (click)="payOrder()">Pay {{ price }}$
+  </button>
+</div>

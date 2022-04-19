@@ -1,0 +1,26 @@
+@import "src/styles/variables/colors";
+.personal-info {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  .info {
+    padding: 15px 10px 5px;
+    background: $blockBackground;
+    p {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    background: $btnColor;
+    padding: 6px;
+    margin-top: 30px;
+  }
+}
+
+

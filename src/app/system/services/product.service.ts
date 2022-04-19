@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Product } from '../../shared/models';
+import { products } from '../../shared/constants';
 
 @Injectable()
 export class ProductService {
@@ -26,6 +27,6 @@ export class ProductService {
   }
 
   getProducts(): Observable<Product[]> {
-    return this._fireDatabase.list('products').valueChanges() as Observable<Product[]>;
+    return this._fireDatabase.list(products).valueChanges() as Observable<Product[]>;
   }
 }

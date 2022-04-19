@@ -1,0 +1,49 @@
+<div class="checkout">
+  <h3 class="title">Checkout</h3>
+
+  <ng-container *ngIf="price$ | async as price">
+    <app-personal-info *ngIf="personalInfo else form"
+                       [information]="personalInfo"
+                       [price]="price"
+                       (payOrderClick)="payOrder()"></app-personal-info>
+
+    <ng-template #form>
+      <form *ngIf="user$ | async as user"
+            class="checkout-form"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="checkoutForm">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Please fill email field" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="Please fill email field" formControlName="fullName">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Please fill email field" formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Please fill email field" formControlName="phone">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Credit card number</mat-label>
+          <input matInput placeholder="Please fill email field" formControlName="creditCardNumber">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>CVV</mat-label>
+          <input type="password" matInput placeholder="Please fill email field" formControlName="cvv">
+        </mat-form-field>
+
+        <button class="btn"
+                type="submit"
+                mat-stroked-button
+                [disabled]="checkoutForm.invalid">Pay {{ price || 0 }}$
+        </button>
+      </form>
+    </ng-template>
+  </ng-container>
+
+</div>

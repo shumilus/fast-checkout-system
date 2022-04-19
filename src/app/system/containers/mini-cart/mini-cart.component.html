@@ -1,5 +1,5 @@
 <div class="mini-cart">
   <mat-icon>add_shopping_cart</mat-icon>
-  <span>Cart</span>
-  <span>( {{count}} )</span>
+  <span >Cart</span>
+  <span *ngIf="{ quantity: quantity$ | async } as cart">( {{ cart.quantity || 0 }} )</span>
 </div>

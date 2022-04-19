@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { AuthenticationService } from '../../../authentication/services';
 import { Router } from '@angular/router';
 
@@ -18,5 +19,9 @@ export class HeaderComponent {
     this._authService.signOut()
       .then(() => this._router.navigate(['sign-in']))
       .catch(err => console.log(err));
+  }
+
+  back(): void {
+    this._router.navigate(['/']);
   }
 }

@@ -1,5 +1,11 @@
 <div class="header">
-  <button mat-button color="primary" (click)="signOut()">Sign out</button>
+  <div class="flex-container">
+    <button mat-button color="primary" (click)="signOut()">Sign out</button>
+    <mat-icon aria-hidden="false"
+              aria-label="Example home icon"
+              (click)="back()">home</mat-icon>
+  </div>
+
 
   <div>
     <app-mini-cart></app-mini-cart>

@@ -1,0 +1,7 @@
+<div class="confirmation">
+  <h3 class="confirmation-title">Thank you for your purchase</h3>
+
+  <p class="text">Your order number:</p>
+
+  <p class="order" *ngIf="order$ | async as order">{{order.id}}</p>
+</div>

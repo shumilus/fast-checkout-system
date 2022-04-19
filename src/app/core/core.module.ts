@@ -1,11 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 
 import { FirebaseModule } from './modules';
 import { AuthenticationModule } from '../authentication/authentication.module';
 import { PageNotFoundComponent } from './components';
 import { SystemModule } from '../system/system.module';
-import { ProductService } from '../system/services';
+import { cartFeatureName, cartReducer } from './store/cart/cart.reducer';
+import { userFeatureName, userReducer } from './store/user/user.reducer';
+import { orderFeatureName, orderReducer } from './store/order/order.reducer';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,12 @@ import { ProductService } from '../system/services';
     FirebaseModule,
     SystemModule,
     AuthenticationModule,
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(cartFeatureName, cartReducer),
+    StoreModule.forFeature(userFeatureName, userReducer),
+    StoreModule.forFeature(orderFeatureName, orderReducer),
   ],
-  providers: [ProductService],
+  providers: [],
   exports: []
 })
 export class CoreModule {

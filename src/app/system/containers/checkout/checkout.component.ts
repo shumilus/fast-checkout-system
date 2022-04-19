@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { finalize, map, switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ import { UserState } from '../../../core/store/user/user.reducer';
 import { cart, form, personalInformation } from '../../../shared/constants';
 import { LocalStorageService } from '../../../shared/services';
 import { addProductToCart } from '../../../core/store/cart/cart.actions';
+import { setLoading } from '../../../core/store/loader/loader.actions';
 
 @Component({
   selector: 'app-checkout',
@@ -107,6 +108,10 @@ export class CheckoutComponent implements OnInit {
         quantity: this._productQuantity,
       })
     )
+      .pipe(
+        tap(() => this._store.dispatch(setLoading({loading: true}))),
+        finalize(() => this._store.dispatch(setLoading({loading: false})))
+      )
       .subscribe(() => {
         this._clearCart();
         this._router.navigate(['/confirmation']);

@@ -5,6 +5,8 @@ import UserCredential = firebase.auth.UserCredential;
 import { AuthenticationService } from '../../services';
 import { UserCredentials } from '../../../shared/models';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setLoading } from '../../../core/store/loader/loader.actions';
 
 @Component({
   selector: 'app-authentication',
@@ -15,26 +17,25 @@ import { Router } from '@angular/router';
 export class AuthenticationComponent {
 
   constructor(private _authService: AuthenticationService,
+              private _store: Store,
               private _router: Router) {
   }
 
-  signUp(): void {
-    this._authService.signUp('Zen@sayollo.com', '123456')
-      .then((userCredential: UserCredential) => {
-        console.log(userCredential);
-        console.log('You are Successfully signed up!');
-      })
-      .catch(error => {
-        console.log('Something is wrong:', error.message);
-      });
+  signUp(email: string, password: string): void {
+    this._authService.signUp(email, password)
+      .then()
+      .catch(error => console.log('Something is wrong:', error.message));
   }
 
   signIn(credentials: UserCredentials): void {
+    this._store.dispatch(setLoading({loading: true}));
+
     this._authService.signIn(credentials)
       .then((userCredential: UserCredential) => {
-        console.log(userCredential);
-        console.log('You are in!');
-        this._router.navigate(['/']);
+       return this._router.navigate(['/']);
+      })
+      .then(() => {
+        this._store.dispatch(setLoading({loading: false}));
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);

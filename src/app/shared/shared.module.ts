@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-
-import { AngularMaterialModule } from './angular-material.module';
-import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
 import { CommonModule } from '@angular/common';
 
+import { AngularMaterialModule } from './angular-material.module';
+import { LoaderComponent, PersonalInfoComponent } from './components';
+
 @NgModule({
-  declarations: [PersonalInfoComponent],
+  declarations: [
+    PersonalInfoComponent,
+    LoaderComponent,
+  ],
   imports: [
     AngularMaterialModule,
     CommonModule,
@@ -14,6 +17,7 @@ import { CommonModule } from '@angular/common';
   exports: [
     AngularMaterialModule,
     PersonalInfoComponent,
+    LoaderComponent,
   ]
 })
 export class SharedModule {

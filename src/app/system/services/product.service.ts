@@ -1,29 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Product } from '../../shared/models';
 import { products } from '../../shared/constants';
+import { ApiService } from '../../core/services';
 
 @Injectable()
 export class ProductService {
+  private _path = 'https://fast-checkout-system-default-rtdb.firebaseio.com/products.json';
 
   constructor(private _fireDatabase: AngularFireDatabase,
-              private _http: HttpClient) {
+              private _api: ApiService) {
   }
 
-  addProduct(): void {
-    this._http.post('https://fast-checkout-system-default-rtdb.firebaseio.com/products.json',
-      {
-        id: '1',
-        name: 'Product name',
-        path: './assets/images/products/game-product.png',
-        description: 'Short Description Short Description Short\n' +
-          '    Description Short Description Short Description',
-        price: 40,
-      }
-    ).subscribe((res) => console.log(res));
+  addProduct(product: Product): Observable<void> {
+    return this._api.post(this._path, product);
   }
 
   getProducts(): Observable<Product[]> {

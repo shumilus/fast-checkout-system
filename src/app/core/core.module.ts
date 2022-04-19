@@ -9,6 +9,7 @@ import { SystemModule } from '../system/system.module';
 import { cartFeatureName, cartReducer } from './store/cart/cart.reducer';
 import { userFeatureName, userReducer } from './store/user/user.reducer';
 import { orderFeatureName, orderReducer } from './store/order/order.reducer';
+import { loaderFeatureName, loaderReducer } from './store/loader/loader.reducer';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { orderFeatureName, orderReducer } from './store/order/order.reducer';
     StoreModule.forFeature(cartFeatureName, cartReducer),
     StoreModule.forFeature(userFeatureName, userReducer),
     StoreModule.forFeature(orderFeatureName, orderReducer),
+    StoreModule.forFeature(loaderFeatureName, loaderReducer),
   ],
   providers: [],
   exports: []

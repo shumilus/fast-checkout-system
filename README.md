@@ -1,27 +1,31 @@
-# FastCheckoutSystem
+# Spartacus Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+This is the Angular based application for examine relevant needed skills.
 
-## Development server
+## Set up steps
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Install Node.js
 
-## Code scaffolding
+* Install Angular CLI
+```bash
+npm install -g @angular/cli
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Install packages related to project
+```bash
+npm install
+```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Use command below for start project in developer mode on localhost 4200
+```bash
+npm start
+```
+### Comments
+* Application was developed according to the requirements.
+* Google Firebase was used as the database.
+* The following tools were used: Angular Material library and NgRx.
+* The registration page was not developed as it was not required according to the task, but the logic for creating new users was implemented.
+* The angular reactives form approach was used to implement the forms.
+* Local storage was used as intermediate storage. Database features have not been fully utilized.
+* Several elements were added to the application that were not included in the requirements: such as the "checkout" button, the "home" icon, the "sign out" button, the "cart" icon. These elements have been added to increase the interactivity of the application.
+* Reactive approach was used in the application.

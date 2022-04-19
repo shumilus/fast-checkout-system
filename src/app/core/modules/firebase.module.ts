@@ -5,14 +5,13 @@ import { environment } from '../../../environments/environment';
 
 import { FirebaseService } from '../services';
 
-
 @NgModule({
   declarations: [],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
   ],
-  providers:[FirebaseService]
+  providers: [FirebaseService]
 })
 export class FirebaseModule {
 }

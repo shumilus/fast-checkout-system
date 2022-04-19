@@ -11,6 +11,6 @@ export class ApiService {
   }
 
   post(url: string, body: {} = {}, httpOptions?: any, responseType: any = 'json'): Observable<any> {
-    return this._http.post<any>(url, body, { ...httpOptions, responseType });
+    return this._http.post<any>(url, body, {...httpOptions, responseType});
   }
 }

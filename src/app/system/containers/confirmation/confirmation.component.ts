@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
@@ -24,9 +24,7 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit(): void {
     this._orderService.getOrders()
       .pipe(
-        map((orders: Order[]) => {
-          return orders[orders.length - 1]
-        }),
+        map((orders: Order[]) => orders[orders.length - 1])
       )
       .subscribe((order: Order) => {
         this._store.dispatch(saveOrderToStore(order));

@@ -30,7 +30,7 @@ export class FirebaseService {
     return this._fireAuth.signOut();
   }
 
-  isUserAuthenticated(): Observable<boolean>{
+  isUserAuthenticated(): Observable<boolean> {
     return this._userData$.pipe(map((user: User) => Boolean(user)));
   }
 }

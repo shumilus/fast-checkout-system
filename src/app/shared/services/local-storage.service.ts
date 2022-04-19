@@ -6,8 +6,6 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   private _localStorage = localStorage;
 
-  constructor() { }
-
   isLocalStorageAvailable(): boolean {
     try {
       const key = '__storage_test__';

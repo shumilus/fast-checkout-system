@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import firebase from 'firebase';
 import UserCredential = firebase.auth.UserCredential;
 
 import { AuthenticationService } from '../../services';
 import { UserCredentials } from '../../../shared/models';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { setLoading } from '../../../core/store/loader/loader.actions';
 
 @Component({
@@ -21,6 +21,7 @@ export class AuthenticationComponent {
               private _router: Router) {
   }
 
+  // TODO can be used on sign up page
   signUp(email: string, password: string): void {
     this._authService.signUp(email, password)
       .then()
@@ -32,7 +33,7 @@ export class AuthenticationComponent {
 
     this._authService.signIn(credentials)
       .then((userCredential: UserCredential) => {
-       return this._router.navigate(['/']);
+        return this._router.navigate(['/']);
       })
       .then(() => {
         this._store.dispatch(setLoading({loading: false}));

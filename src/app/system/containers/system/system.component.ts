@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
 import User = firebase.User;
 import { Store } from '@ngrx/store';
+
 import { saveUserToStore } from '../../../core/store/user/user.action';
 
 @Component({
@@ -27,5 +28,4 @@ export class SystemComponent implements OnInit {
     )
       .subscribe();
   }
-
 }

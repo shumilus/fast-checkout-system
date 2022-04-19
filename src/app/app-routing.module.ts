@@ -5,7 +5,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { PageNotFoundComponent } from './core/components';
 import { SystemModule } from './system/system.module';
 
-
 const routes: Routes = [
   {
     path: 'sign-in',

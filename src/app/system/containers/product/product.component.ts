@@ -8,6 +8,7 @@ import { Product } from '../../../shared/models';
 import { addProductToCart } from '../../../core/store/cart/cart.actions';
 import { getProductQuantity } from '../../../core/store/cart/cart.selectors';
 import { LocalStorageService } from '../../../shared/services';
+import { cart } from '../../../shared/constants';
 
 @Component({
   selector: 'app-product',
@@ -35,7 +36,7 @@ export class ProductComponent implements OnInit {
   onAddProductToCart(quantityInCart: number): void {
     const quantity = this.counter + quantityInCart;
     this._store.dispatch(addProductToCart({quantity}));
-    this._localStorageService.setItem('cart', JSON.stringify({quantity}));
+    this._localStorageService.setItem(cart, JSON.stringify({quantity}));
 
     this.counter = 0;
   }

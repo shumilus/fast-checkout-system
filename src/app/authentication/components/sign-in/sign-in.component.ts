@@ -11,10 +11,8 @@ import { UserCredentials } from '../../../shared/models';
 })
 export class SignInComponent implements OnInit {
   @Output() submitForm = new EventEmitter<UserCredentials>();
-  signInForm: FormGroup;
 
-  constructor() {
-  }
+  signInForm: FormGroup;
 
   ngOnInit(): void {
     this._createFrom();

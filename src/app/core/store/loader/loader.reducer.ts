@@ -2,7 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 
 import { setLoading } from './loader.actions';
 
-
 export const loaderFeatureName = 'loader';
 
 export interface LoaderState {
@@ -16,7 +15,7 @@ export const initialLoaderState: LoaderState = {
 export const loaderReducer = createReducer(
   initialLoaderState,
 
-  on(setLoading, (state, { loading }) => ({
+  on(setLoading, (state, {loading}) => ({
     ...state,
     loading
   }))

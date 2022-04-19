@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthenticationGuard } from '../authentication/services';
+import { CheckoutGuard } from './services/checkout.guard';
 import {
   CheckoutComponent,
   ConfirmationComponent,
   ProductComponent,
   SystemComponent
 } from './containers';
-import { CheckoutGuard } from './services/checkout.guard';
 
 const systemRoutes: Routes = [
   {
@@ -29,5 +29,4 @@ const systemRoutes: Routes = [
 })
 
 export class SystemRoutingModule {
-
 }

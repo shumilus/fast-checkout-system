@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../../core/services';
-import { Order, Product } from '../../shared/models';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Order } from '../../shared/models';
 import { orders } from '../../shared/constants';
 
 @Injectable()

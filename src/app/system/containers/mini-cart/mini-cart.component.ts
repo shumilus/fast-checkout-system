@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+
 import { getProductQuantity } from '../../../core/store/cart/cart.selectors';
 import { addProductToCart } from '../../../core/store/cart/cart.actions';
 import { LocalStorageService } from '../../../shared/services';
@@ -28,5 +29,4 @@ export class MiniCartComponent implements OnInit {
 
     this._getCartFromLocalStorage();
   }
-
 }
